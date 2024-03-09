@@ -16,9 +16,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(model.id, model.__dict__["id"])
         self.assertEqual(model.created_at, model.__dict__["created_at"])
         self.assertEqual(model.updated_at, model.__dict__["updated_at"])
+
     def test_save(self):
         pass
+
     def test_to_dict(self):
         pass
+
     def test_str(self):
         pass

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+""" FileStorage Class"""
+
 import os
 import json
-
-""" FileStorage Class"""
 
 
 class FileStorage:

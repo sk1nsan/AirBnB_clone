@@ -1,9 +1,9 @@
 #!/usr/bin/python3
+""" BaseModel Class"""
+
 from uuid import uuid4
 from datetime import datetime
 from . import storage
-
-""" BaseModel Class"""
 
 
 class BaseModel:
@@ -25,7 +25,7 @@ class BaseModel:
 
     def __str__(self):
         """string representation which is in this format
-         [<class name>] (<self.id>) <self.__dict__>"""
+        [<class name>] (<self.id>) <self.__dict__>"""
         className = self.__class__.__name__
         return "[{}] ({}) {}".format(className, self.id, self.__dict__)
 
@@ -36,7 +36,7 @@ class BaseModel:
 
     def to_dict(self):
         """returns a dictionary containing
-         all keys/values of __dict__ of the instance"""
+        all keys/values of __dict__ of the instance"""
         copy_dict = self.__dict__.copy()
         copy_dict["__class__"] = self.__class__.__name__
         copy_dict["created_at"] = self.created_at.isoformat()

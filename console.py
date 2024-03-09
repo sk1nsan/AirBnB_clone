@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""the entry point of the command interpreter"""
+
 
 import cmd
 from models.base_model import BaseModel
@@ -10,15 +12,12 @@ from models.place import Place
 from models.review import Review
 from models import storage
 
-"""the entry point of the command interpreter"""
-
 
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand"""
 
     prompt = "(hbnb) "
-    classNames = ["BaseModel", "User", "State",
-                  "City", "Amenity", "Place", "Review"]
+    classNames = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
 
     def emptyline(self):
         """empty lines enterned doesn't excute anything"""
@@ -146,10 +145,11 @@ class HBNBCommand(cmd.Cmd):
 
     def help_update(self):
         """help for update"""
-        print("Updates an instance based on the class name"
-              " and id by adding or updating attribute")
-        print("Usage: update <class name> <id>"
-              " <attribute name> <attribute value>\n")
+        print(
+            "Updates an instance based on the class name"
+            " and id by adding or updating attribute"
+        )
+        print("Usage: update <class name> <id>" " <attribute name> <attribute value>\n")
 
 
 if __name__ == "__main__":

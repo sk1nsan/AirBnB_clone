@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+""" Review Class"""
+
 
 from models.base_model import BaseModel
-
-""" Review Class"""
 
 
 class Review(BaseModel):

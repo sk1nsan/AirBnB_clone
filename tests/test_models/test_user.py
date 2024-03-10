@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""unittesting UserClass"""
 
 from models.user import User
 from models.base_model import BaseModel

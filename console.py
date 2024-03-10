@@ -151,6 +151,17 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: update <class name> <id>"
               " <attribute name> <attribute value>\n")
 
+    def precmd(self, arg):
+        line = arg.split()
+        if len(line) == 1:
+            for c in HBNBCommand.classNames:
+                if "{}.all()".format(c) == arg:
+                    return cmd.Cmd.precmd(self, "all " + c)
+
+            return cmd.Cmd.precmd(self, arg)
+        else:
+            return cmd.Cmd.precmd(self, arg)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

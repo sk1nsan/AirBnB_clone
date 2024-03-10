@@ -151,12 +151,36 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: update <class name> <id>"
               " <attribute name> <attribute value>\n")
 
+    def do_count(self, arg):
+        """print number of instances of given class"""
+        line = arg.split()
+        count = 0
+        if len(line) < 1:
+            print(len(storage.all()))
+
+        elif line[0] not in HBNBCommand.classNames:
+            print("** class doesn't exist **")
+        else:
+            for key in storage.all():
+                if line[0] in key:
+                    count += 1
+            print(count)
+
+    def help_count(self):
+        """help for count"""
+        print("Prints number of instances")
+        print("Usage: count")
+        print("Prints number of instances of specific class")
+        print("Usage: count <classname>\n")
+
     def precmd(self, arg):
         line = arg.split()
         if len(line) == 1:
             for c in HBNBCommand.classNames:
                 if "{}.all()".format(c) == arg:
                     return cmd.Cmd.precmd(self, "all " + c)
+                if "{}.count()".format(c) == arg:
+                    return cmd.Cmd.precmd(self, "count " + c)
 
             return cmd.Cmd.precmd(self, arg)
         else:

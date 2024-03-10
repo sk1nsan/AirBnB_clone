@@ -3,6 +3,7 @@
 
 
 import cmd
+import re
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -181,6 +182,9 @@ class HBNBCommand(cmd.Cmd):
                     return cmd.Cmd.precmd(self, "all " + c)
                 if "{}.count()".format(c) == arg:
                     return cmd.Cmd.precmd(self, "count " + c)
+                match = re.search(rf'{c}.show\("(.*)\"\)', arg)
+                if match:
+                    return cmd.Cmd.precmd(self, "show " + c + " " + match[1])
 
             return cmd.Cmd.precmd(self, arg)
         else:

@@ -50,3 +50,6 @@ class FileStorage:
                     class_name = value["__class__"]
                     obj = eval("{}(**value)".format(class_name))
                     FileStorage.__objects[key] = obj
+
+    def reset(self):
+        FileStorage.__objects = {}

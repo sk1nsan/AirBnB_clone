@@ -178,17 +178,21 @@ class HBNBCommand(cmd.Cmd):
         line = arg.split()
         if len(line) == 1:
             for c in HBNBCommand.classNames:
+                Cmd = cmd.Cmd
                 if "{}.all()".format(c) == arg:
-                    return cmd.Cmd.precmd(self, "all " + c)
+                    return Cmd.precmd(self, "all " + c)
                 if "{}.count()".format(c) == arg:
-                    return cmd.Cmd.precmd(self, "count " + c)
+                    return Cmd.precmd(self, "count " + c)
                 match = re.search(rf'{c}.show\("(.*)\"\)', arg)
                 if match:
-                    return cmd.Cmd.precmd(self, "show " + c + " " + match[1])
+                    return Cmd.precmd(self, "show " + c + " " + match[1])
+                match = re.search(rf'{c}.destroy\("(.*)\"\)', arg)
+                if match:
+                    return Cmd.precmd(self, "destroy " + c + " " + match[1])
 
-            return cmd.Cmd.precmd(self, arg)
+            return Cmd.precmd(self, arg)
         else:
-            return cmd.Cmd.precmd(self, arg)
+            return Cmd.precmd(self, arg)
 
 
 if __name__ == "__main__":

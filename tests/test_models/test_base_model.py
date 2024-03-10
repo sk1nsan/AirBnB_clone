@@ -10,7 +10,7 @@ import json
 
 
 class TestBaseModel(unittest.TestCase):
-    """ BaseModel Test Class"""
+    """BaseModel Test Class"""
 
     # BaseModel instance is created successfully with default values
     def test_default_values(self):
@@ -36,19 +36,19 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         """test save method"""
         obj = BaseModel()
-        obj.number = 10
+        obj.num = 10
         old_updated_at = obj.updated_at
         obj.save()
         new_updated_at = obj.updated_at
         self.assertNotEqual(old_updated_at, new_updated_at)
 
         with open("file.json", "r") as f:
-            json_file = json.loads(f.read())
-        self.assertEqual(json_file["BaseModel.{}".format(obj.id)], obj.to_dict())
-        self.assertEqual(json_file["BaseModel.{}".format(obj.id)]["number"], 10)
+            dict = json.loads(f.read())
+        self.assertEqual(dict["BaseModel.{}".format(obj.id)], obj.to_dict())
+        self.assertEqual(dict["BaseModel.{}".format(obj.id)]["num"], 10)
 
     def test_to_dict(self):
-        """" test to_dict method"""
+        """ " test to_dict method"""
         obj = BaseModel()
 
         obj.name = "John"

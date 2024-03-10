@@ -175,10 +175,10 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: count <classname>\n")
 
     def precmd(self, arg):
+        Cmd = cmd.Cmd
         line = arg.split()
         if len(line) == 1:
             for c in HBNBCommand.classNames:
-                Cmd = cmd.Cmd
                 if "{}.all()".format(c) == arg:
                     return Cmd.precmd(self, "all " + c)
                 if "{}.count()".format(c) == arg:
